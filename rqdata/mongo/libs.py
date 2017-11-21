@@ -24,16 +24,15 @@ class MongoHelper(object):
         self.port = port
 
         self.client = MongoClient(self.host, self.port)
-        self.stock_collection = self.client[self.stock_min_db][self.stock_min_collection]
+        self.stock_db = self.client[self.stock_min_db]
 
     def latest_date(self, code, type="CS"):
         if type == "CS":
-            cursor = self.stock_collection.find({"wind_code": self.get_stock_code(code)}, {"date": 1, "_id": 0}).sort(
-                [("date", pymongo.DESCENDING)]).limit(1)
+            cursor = self.stock_db[code].find().sort(
+                [("dt", pymongo.DESCENDING)]).limit(1)
             try:
-                date = cursor.next()['date']
+                date = cursor.next()['dt']
             except Exception as e:
-                print(str(e))
                 date = None
             return date
         elif type == "future":
@@ -42,7 +41,6 @@ class MongoHelper(object):
             try:
                 date = cursor.next()['date']
             except Exception as e:
-                print(str(e))
                 date = None
             return date
 
@@ -58,10 +56,9 @@ class MongoHelper(object):
         else:
             return code[:-4] + "SZ"
 
-    def insert(self, data, type="CS"):
-        # self.client[self.stock_min_db]["test"].insert(data)
+    def insert(self, code, data, type="CS"):
         if type == "CS":
-            self.stock_collection.insert(data)
+            self.stock_db[code].insert(data)
         elif type == "future":
             collection, data = data
             self.future_db[collection].insert(data)

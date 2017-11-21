@@ -29,8 +29,8 @@ try:
     )
 finally:
     pass
-driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/future.ipynb")
-driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/future.ipynb")
+driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/zipline-1m.ipynb")
+driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/zipline-1m.ipynb")
 time.sleep(2)
 element = driver.find_element_by_xpath('//button[@title="run cell, select below"]')
 element.click()

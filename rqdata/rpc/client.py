@@ -6,9 +6,10 @@ import struct
 import threading
 import pickle
 
+
 def send_msg(sock, msg):
     # Prefix each message with a 4-byte length (network byte order)
-    msg = zlib.compress(pickle.dumps(msg,protocol = 2), 3)
+    msg = zlib.compress(pickle.dumps(msg, protocol=2), 3)
     length = len(msg)
     msg = struct.pack('>I', length) + msg
     sock.sendall(msg)
@@ -37,6 +38,7 @@ def recvall(sock, n):
         byte_recved = byte_recved + len(packet)
     data = b''.join(total_data)
     return pickle.loads(zlib.decompress(data))
+
 
 class RpcClient(object):
     def __init__(self, address, port):

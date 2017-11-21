@@ -2,14 +2,12 @@
 
 from setuptools import setup, find_packages
 
-
 try:
     import pypandoc
 
     long_description = pypandoc.convert('README.md', 'rst')
 except (IOError, ImportError):
     long_description = ''
-
 
 setup(
     name='rq-data',

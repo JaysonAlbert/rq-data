@@ -18,7 +18,7 @@ rq-data
 3. 在研究中新建notebook名为：test.ipynb, 并将`rqdata/scripts/rq.py`中代码copy进去，或者参照自行编写其它数据获取代码。
 4. 在`rqdata/scripts/passwd.py中配置ricequant的用户名密码
 5. 将`driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/zipline-1m.ipynb")`中的
-url路径改为3中test.ipynb的路径。
+url路径改为步骤3中test.ipynb的路径。
 6. 运行`rqdata/scripts/rice_auto.py`
 
 有任何问题，欢迎加QQ群434588628解惑。

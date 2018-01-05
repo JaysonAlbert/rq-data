@@ -13,7 +13,7 @@ rq-data
 3. 安装配置mongodb数据库（或根据自己需求，修改rpc的回调函数，存其它数据库，或者csv）
 
 使用步骤：
-1. 在拥有公网ip的电脑上运行rpc服务器端 `rqdata/rpc/server.py`
+1. 在拥有公网ip的电脑上运行rpc服务器端 `rqdata/mongo/mongo_server.py`
 2. 将`rqdata/rpc/client.py` 上传到 ricequant研究中的notebook中，放到文件夹rpc下，重命名为rpc.py
 3. 在研究中新建notebook名为：test.ipynb, 并将`rqdata/scripts/`中`[future1m.py, stock1m.py, rq.py]`中的某个代码copy进去，或者参照自行编写其它数据获取代码。
 4. 在`rqdata/scripts/passwd.py中配置ricequant的用户名密码

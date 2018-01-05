@@ -1,7 +1,7 @@
 rq-data
 ==============
 
-获取ricequant中数据.
+获取ricequant中数据, 其中期货数据默认为vnpy格式。
 
 <br>
 <br>

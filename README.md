@@ -15,7 +15,7 @@ rq-data
 使用步骤：
 1. 在拥有公网ip的电脑上运行rpc服务器端 `rqdata/rpc/server.py`
 2. 将`rqdata/rpc/client.py` 上传到 ricequant研究中的notebook中，放到文件夹rpc下，重命名为rpc.py
-3. 在研究中新建notebook名为：test.ipynb, 并将`rqdata/scripts/rq.py`中代码copy进去，或者参照自行编写其它数据获取代码。
+3. 在研究中新建notebook名为：test.ipynb, 并将`rqdata/scripts/`中`[future1m.py, stock1m.py, rq.py]`中的某个代码copy进去，或者参照自行编写其它数据获取代码。
 4. 在`rqdata/scripts/passwd.py中配置ricequant的用户名密码
 5. 将`driver.get("https://www.ricequant.com/research/user/user_310960/notebooks/zipline-1m.ipynb")`中的
 url路径改为3中test.ipynb的路径。

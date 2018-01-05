@@ -60,5 +60,4 @@ class MongoHelper(object):
         if type == "CS":
             self.stock_db[code].insert(data)
         elif type == "future":
-            collection, data = data
-            self.future_db[collection].insert(data)
+            self.future_db[code].insert(data)

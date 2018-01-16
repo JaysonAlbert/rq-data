@@ -58,6 +58,8 @@ class MongoHelper(object):
 
     def insert(self, code, data, type="CS"):
         if type == "CS":
-            self.stock_db[code].insert(data)
+            for d in data:
+                self.stock_db[code].update({'datetime':d['datetime']},d,upsert=True)
         elif type == "future":
-            self.future_db[code].insert(data)
+            for d in data:
+                self.future_db[code].update({'datetime':d['datetime']},d,upsert=True)

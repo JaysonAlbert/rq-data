@@ -8,8 +8,8 @@ rq-data
 
 
 准备工作：
-1. 公网IP的网络（若没有可以使用ngrok工具，详细使用方法自行google）
-2. 配置selenium环境
+1. 公网IP的网络（若没有可以使用ngrok工具，详细使用方法自行google或参照本目录下的word教程）
+2. 配置selenium环境（下载chromewebdriver，并将其路径添加到环境变量PATH中，自行翻墙下载或见群文件）
 3. 安装配置mongodb数据库（或根据自己需求，修改rpc的回调函数，存其它数据库，或者csv）
 
 使用步骤：

@@ -12,6 +12,5 @@ host = 'localhost'
 port = 1111
 RpcHandler.register(mongo_helper.latest_date)
 RpcHandler.register(mongo_helper.insert)
-RpcHandler.register(print)
 server = SocketServer.TCPServer((host, port), RpcHandler)
 server.serve_forever()

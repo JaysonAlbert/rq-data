@@ -67,13 +67,14 @@ def insert_mongo2(client, code, frequency):
         print(code, "no begin_date, set default: 20100104")
 
     else:
-        print("start date: {}".format(start_date))
+        print("\r{}, start date: {}".format(code, start_date), end='')
     start_date = datetime.datetime.strptime(str(start_date), "%Y%m%d") + datetime.timedelta(1)
 
     end_date = datetime.datetime.now().date()
+    if start_date.date() > end_date:
+        return
     df = get_future_price2(code, start_date, end_date, frequency)
     if df.empty:
-        print(code, "empty df")
         return
     client.insert(code + '0000', df.to_dict('record'), type="future")
 
@@ -83,10 +84,13 @@ codes = ["IC", "IF", "IH", "T", "TF", "CF", "FG", "MA", "OI", "RM", "SR",
          "v", "y", "ag", "al", "au", "bu", "cu", "hc", "ni", "pb", "rb",
          "ru", "sn", "zn"]
 
-code = 'rb88'
+code = 'rb'
 frequency = '1m'
-host = "www.carniejq.cn"
+host = "carniejq.cn"
 port = 31245
 client = RpcClient(host, port)
+# insert_mongo2(client,code,frequency)
 for code in codes:
     insert_mongo2(client, code, frequency)
+print("\rfinished, stoping", end='')
+client.stop_all()

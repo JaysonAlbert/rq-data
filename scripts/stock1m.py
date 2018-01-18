@@ -63,3 +63,4 @@ def main():
             print("\r %f percent complete" % (float(count) / len(stock_list) * 100), end="")
         count = count + 1
     print("\r finished")
+    client.stop_all()

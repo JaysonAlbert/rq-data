@@ -40,6 +40,7 @@ def test():
         bar.is_hidden = False
         for code in bar:
             insert_one(client, code, default_start='20171111')
+    client.stop_all()
 
 
 test()

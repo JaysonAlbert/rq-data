@@ -8,6 +8,7 @@ from passwd import *
 from rqdata.mongo.mongo_server import run_server
 from rqdata.rpc.server import RpcHandler
 import threading
+import subprocess
 import sys
 
 
@@ -60,5 +61,9 @@ if __name__ == '__main__':
     t1 = threading.Thread(target=run_auto, daemon=True)
     t1.start()
 
+    p=subprocess.Popen(r'C:\Users\jayso\Desktop\ngrok4.exe -config C:\Users\jayso\Desktop\.ngrok start-all',cwd=r'C:\Users\jayso\Desktop', shell=True, stdout=subprocess.PIPE)
+
     while not stop:
         pass
+
+    p.kill()

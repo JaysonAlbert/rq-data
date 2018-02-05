@@ -16,15 +16,14 @@ class MongoHelper(object):
     stock_min_db = "A_stock_min"
     stock_min_collection = "A_stock_min"
 
-    future_client = MongoClient("localhost", 27017)
-    future_db = future_client['VnTrader_1Min_Db']
-
     def __init__(self, host="localhost", port=27017):
         self.host = host
         self.port = port
 
         self.client = MongoClient(self.host, self.port)
         self.stock_db = self.client[self.stock_min_db]
+
+        self.future_db = self.client['VnTrader_1Min_Db']
 
     def latest_date(self, code, type="CS"):
         if type == "CS":
@@ -58,10 +57,18 @@ class MongoHelper(object):
 
     def insert(self, code, data, type="CS"):
         if type == "CS":
+            try:
+                self.future_db[code].create_index([('datetime',pymongo.ASCENDING)],unique=True)
+            except Exception as e:
+                pass
             self.stock_db[code].insert(data)
             # for d in data:
             #     self.stock_db[code].update({'datetime':d['datetime']},d,upsert=True)
         elif type == "future":
+            try:
+                self.future_db[code].create_index([('datetime',pymongo.ASCENDING)],unique=True)
+            except Exception as e:
+                pass
             self.future_db[code].insert(data)
             # for d in data:
             #     self.future_db[code].update({'datetime':d['datetime']},d,upsert=True)

@@ -10,7 +10,7 @@ from rqdata.rpc.server import RpcHandler
 
 def run_server():
     mongo_helper = MongoHelper("127.0.0.1", 27017)
-    host = 'localhost'
+    host = '0.0.0.0'
     port = 1111
     RpcHandler.register(mongo_helper.latest_date)
     RpcHandler.register(mongo_helper.insert)

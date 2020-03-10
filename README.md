@@ -29,5 +29,3 @@ rq-data
 url路径改为步骤3中test.ipynb的路径。
 3. 运行`rqdata/scripts/rice_auto.py`
 
-
-###### 有任何问题，欢迎加QQ群434588628解惑。
